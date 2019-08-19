@@ -1,7 +1,29 @@
-$(document).ready(function() {
+$(document).ready(function () {
+	$('.mc__item-wrap ul').each(function () {
+		$(this).after("<div class='mc__item-wrap--after'></div>");
+	});
+
+	$('.mc__toggle').click(function () {
+		if ($(this).parent().parent().children('ul').is(':visible')) {
+			$(this).parent().parent().children('ul').slideUp();
+			$(this).parent().parent().children('mc__item-wrap--after').hide();
+		} else {
+			$('body .mc__wrap .mc__item-wrap > ul, .mc__item-wrap--after').hide();
+			$('.mc__item-wrap').removeClass('active');
+			$(this).parent().parent().addClass('active');
+			$(this).parent().parent().children('ul').slideDown();
+			$(this).parent().parent().children('.mc__item-wrap--after').show();
+
+		}
+		// $('body .mc__wrap .mc__item-wrap > ul, .mc__item-wrap--after').hide();
+		// $('.mc__item-wrap').removeClass('active');
+		// $(this).parent().parent().addClass('active');
+		// $(this).parent().parent().children('ul').show();
+		// $(this).parent().parent().children('.mc__item-wrap--after').show(0);
+	});
 
 	//Цели для Яндекс.Метрики и Google Analytics
-	$(".count_element").on("click", (function() {
+	$(".count_element").on("click", (function () {
 		ga("send", "event", "goal", "goal");
 		yaCounterXXXXXXXX.reachGoal("goal");
 		return true;
@@ -18,8 +40,8 @@ $(document).ready(function() {
 	//equalheight - одинаковая высота колонок
 	//Пример списка элементов:
 	//var eqElement = ".cat_container > div, .home_news > div"
-	var eqElement = ".element"
-	$(window).load(function(){equalheight(eqElement);}).resize(function(){equalheight(eqElement);});
+	var eqElement = ".hi__item, .sb__content > div"
+	$(window).load(function () { equalheight(eqElement); }).resize(function () { equalheight(eqElement); });
 
 	//Masked Input Plugin
 	//Документация: http://digitalbush.com/projects/masked-input-plugin/
@@ -29,7 +51,7 @@ $(document).ready(function() {
 	//Документация: http://keith-wood.name/countdown.html
 	//<div class="countdown" date-time="2015-01-07"></div>
 	var austDay = new Date($(".countdown").attr("date-time"));
-	$(".countdown").countdown({until: austDay, format: 'yowdHMS'});
+	$(".countdown").countdown({ until: austDay, format: 'yowdHMS' });
 
 	//Попап менеджер FancyBox
 	//Документация: http://fancybox.net/howto
@@ -44,24 +66,24 @@ $(document).ready(function() {
 
 	//Добавляет классы дочерним блокам .block для анимации
 	//Документация: http://imakewebthings.com/jquery-waypoints/
-	$(".block").waypoint(function(direction) {
+	$(".block").waypoint(function (direction) {
 		if (direction === "down") {
 			$(".class").addClass("active");
 		} else if (direction === "up") {
 			$(".class").removeClass("deactive");
 		};
-	}, {offset: 100});
+	}, { offset: 100 });
 
 	//Плавный скролл до блока .div по клику на .scroll
 	//Документация: https://github.com/flesler/jquery.scrollTo
-	$("a.scroll").click(function() {
+	$("a.scroll").click(function () {
 		$.scrollTo($(".div"), 800, {
 			offset: -90
 		});
 	});
 	//Скролл до id, указанного в hash URL
 	var elem = window.location.hash;
-	if(elem) {
+	if (elem) {
 		$.scrollTo(elem, 800, {
 			offset: -90
 		});
@@ -72,11 +94,11 @@ $(document).ready(function() {
 	function carousel_1() {
 		var owl = $(".carousel");
 		owl.owlCarousel({
-			items : 1,
-			loop : true,
-			autoHeight : true,
-			dots : true,
-			singleItem : true
+			items: 1,
+			loop: true,
+			autoHeight: true,
+			dots: true,
+			singleItem: true
 		});
 		owl.on("mousewheel", ".owl-wrapper", function (e) {
 			if (e.deltaY > 0) {
@@ -86,17 +108,17 @@ $(document).ready(function() {
 			}
 			e.preventDefault();
 		});
-		$(".next_button").click(function() {
+		$(".next_button").click(function () {
 			owl.trigger("owl.next");
 		});
-		$(".prev_button").click(function() {
+		$(".prev_button").click(function () {
 			owl.trigger("owl.prev");
 		});
-		owl.on("resized.owl.carousel", function(event) {
+		owl.on("resized.owl.carousel", function (event) {
 			var $this = $(this);
 			$this.find(".owl-height").css("height", $this.find(".owl-item.active").height());
 		});
-		setTimeout(function() {
+		setTimeout(function () {
 			owl.find(".owl-height").css("height", owl.find(".owl-item.active").height());
 		}, 5000);
 	};
@@ -115,38 +137,38 @@ $(document).ready(function() {
 
 	//Аякс отправка форм
 	//Документация: http://api.jquery.com/jquery.ajax/
-	$("form").submit(function() {
+	$("form").submit(function () {
 		$.ajax({
 			type: "GET",
 			url: "mail.php",
 			data: $("form").serialize()
-		}).done(function() {
+		}).done(function () {
 			alert("Спасибо за заявку!");
-			setTimeout(function() {
+			setTimeout(function () {
 				$.fancybox.close();
 			}, 1000);
 		});
 		return false;
 	});
-	
+
 });
 
 // Адаптивные скрипты, которые срабатывают только при определенном разрешении экрана
 // Документация: https://github.com/maciej-gurban/responsive-bootstrap-toolkit
-(function($, document, window, viewport) {
+(function ($, document, window, viewport) {
 	function resizeWindow() {
 		// $("a").click(function() {
 		// 	if (viewport.is("lg")) {
 		// 		return false;
 		// 	};
 		// });
-};
-$(document).ready(function() {
-	resizeWindow();
-});
-$(window).bind("resize", function() {
-	viewport.changed(function(){
+	};
+	$(document).ready(function () {
 		resizeWindow();
 	});
-});
+	$(window).bind("resize", function () {
+		viewport.changed(function () {
+			resizeWindow();
+		});
+	});
 })(jQuery, document, window, ResponsiveBootstrapToolkit);

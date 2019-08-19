@@ -135,6 +135,9 @@ header h1 {
 	padding: 0 25px;
 	font-size: 20px;
 	border-bottom: 4px solid #ac160a;
+	color: #fff;
+	font-family: 'BebasBold';
+
 
 }
 
@@ -266,11 +269,12 @@ header .button {
 
 .main__cats {
 	background-color: #191919;
-	padding: 20px 0 32px;
+	padding: 20px 0 40px;
 
 }
 
-.main__cats h2 {
+.main__cats h2,
+h2.art__header {
 	text-transform: uppercase;
 	color: #c9c9c9;
 	font-family: 'BebasRegular';
@@ -287,7 +291,8 @@ header .button {
 	
 }
 
-section h2 {
+section h2,
+article h2 {
 	position: relative;
 }
 .main__cats-black h2::before {
@@ -319,6 +324,7 @@ section h2 {
 .mc__wrap {
 	text-align: center;
 	padding: 0;
+	position: relative;
 }
 
 .mc__item-wrap {
@@ -331,6 +337,16 @@ section h2 {
 
 .mc__item-wrap:nth-child(1) {
 	margin-left: 0;
+}
+
+.mc__item-wrap--after {
+	content: '';
+	width: 18px;
+	height: 9px;
+	background-image: url('../img/main__cats/icons/list__item/arrow/mc__children-arrow.png');
+	position: absolute;
+	margin: 16px 69px;
+	display: none;
 }
 
 .mc__item-wrap a {
@@ -352,7 +368,8 @@ section h2 {
 	font-weight: normal;
 	font-family: 'BebasBold';
 	font-size: 20px;
-	margin-top: 10px;
+	margin-top: 5px;
+	margin-bottom: 7px;
 }
 
 .mc__item a:hover h4,
@@ -387,6 +404,177 @@ section h2 {
 }
 
 .mc__toggle {
-	background-image: url('../img/main__cats/icons/list__item/arrow/arrow.png');
+	background-color: #212121;
+	height: 25px;
+	position: relative;
+	cursor: pointer;
+	background-image: url('../img/main__cats/icons/list__item/arrow/mc__arr.png');
+	background-repeat: no-repeat;
+	background-position: 72px 10px;
+	
+}
 
+
+.mc__item-wrap.active .mc__toggle,
+.mc__item-wrap:hover .mc__toggle {
+	background-color: #353535;
+	background-position: -118px 10px;
+}
+
+
+.mc__item-wrap.active > ul li {
+	display: inline-block;
+	font-family: 'BebasRegular';
+	
+}
+
+.mc__item-wrap.active > ul li a {
+	padding: 0 10px;
+	text-decoration: underline; 
+}
+
+.mc__item-wrap.active > ul li a:hover {
+	text-decoration: none;
+}
+
+body .mc__wrap .mc__item-wrap > ul {
+	background-color: #353535;
+	font-size: 20px;
+	margin-top: 25px;
+	position: absolute;
+	width: 100%;
+	padding: 15px 0;
+	list-style: none;
+	z-index: 10;
+	display: none;
+	left: 0;
+}
+
+.mc__button-wrap  {
+	text-align: center;
+	margin-top: 30px;
+}
+
+/* Article Content */
+
+article.content {
+	background-color: #e9e9e9;
+}
+
+article h2.art__header::before {
+	content: " ";
+	position: absolute;
+	width: 50px;
+	height: 20px;
+	background-image: url('../img/article/icons/header/art__img.png');
+	top: 19px;
+	margin-left: -68px;
+}
+
+article h2.art__header::after {
+	content: " ";
+	position: absolute;
+	width: 50px;
+	height: 20px;
+	background-image: url('../img/article/icons/header/art__img-two.png');
+	top: 20px;
+	margin-left: 20px;
+	background-position: -50px 0;
+}
+
+article .art__header {
+	color: #050505;
+	margin-bottom: 10px;
+}
+
+p.art__desc {
+	max-width: 790px;
+	text-align: center;
+	margin: auto;
+	margin-top: 0;
+	color: #050505;
+
+}
+
+.home__items {
+	background-color: #d6d6d6;
+	padding: 40px 0;
+	margin-top: 40px;
+}
+.hi__item {
+	color: #050505;
+	text-align: center;
+	font-size: 14px;
+	margin-bottom: 50px;
+}
+.hi__item img {
+	max-width: 100%;
+	border-top: 8px solid #ac160a;
+}
+
+/*---------------------- section__bottom------------------ */
+
+.section__bottom img {
+	max-width: 90%;
+	position: absolute;
+	bottom: 0;
+	margin-bottom: -1px;
+
+}
+
+.section__bottom {
+	padding-top: 32px;
+}
+
+.sb__header.button__contain {
+	text-align: right;
+}
+
+.sb__header {
+	line-height: 50px;
+}
+
+.sb__header h2 {
+	margin: 0;
+	text-transform: uppercase;
+	font-family: 'BebasRegular';
+	font-size: 36px;
+}
+
+.sb__content {
+	margin-top: 30px;
+}
+
+.sb__content p {
+	margin-bottom: 0;
+	padding-bottom: 10px;
+}
+
+footer {
+	background-color: #2a2a2a;
+	color: #fff;
+	padding: 28px 0 35px;
+	font-family: 'BebasBold';
+	font-size: 20px;
+}
+
+footer a {
+	color: #fff;
+	padding: 0 10px;
+	text-decoration: underline;
+}
+
+footer a:hover {
+	text-decoration: none;
+}
+
+footer ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	
+}
+
+footer li {
+	float: left;
 }
